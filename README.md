@@ -22,7 +22,7 @@ The system can produce reports in different formats:
 I chose to use Perplexity for this implementation because pairing an LLM with real-time information retrieval makes a lot of sense for news monitoring. This approach simplifies the rollout by leveraging Perplexity's built-in search capabilities rather than building a complex multi-tool system.
 
 For those looking to extend this system, you could:
-- Use SERP API, Tavily (T-A-V-I-L-Y), or other real-time APIs to augment Perplexity's capabilities
+- Use SERP API, Tavily or other real-time APIs to augment Perplexity's capabilities
 - Replace Perplexity with a custom LLM solution if you prefer more control
 - Pair it with specialized data sources for your specific monitoring needs
 
