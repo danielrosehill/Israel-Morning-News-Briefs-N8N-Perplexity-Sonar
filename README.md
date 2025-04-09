@@ -10,10 +10,21 @@ An automated system for generating structured daily news reports about Israel an
 
 This project provides a system for generating comprehensive, structured news briefs about Israel and the Middle East. It uses carefully crafted system prompts to instruct Perplexity AI to generate reports with consistent structure and formatting, which can be delivered via email or other channels through N8N automation.
 
+> **Note**: While this implementation focuses on Israel (as that's where I live and the news most relevant to me), the template can be easily adapted for any structured reporting need including general news monitoring, brand monitoring, industry tracking, and more. The underlying pattern remains the same regardless of subject matter.
+
 The system can produce reports in different formats:
 - Plain text narrative format
 - Structured format with clear section headings
 - JSON-structured format for machine-readable output
+
+## Why Perplexity?
+
+I chose to use Perplexity for this implementation because pairing an LLM with real-time information retrieval makes a lot of sense for news monitoring. This approach simplifies the rollout by leveraging Perplexity's built-in search capabilities rather than building a complex multi-tool system.
+
+For those looking to extend this system, you could:
+- Use SERP API, Tavily (T-A-V-I-L-Y), or other real-time APIs to augment Perplexity's capabilities
+- Replace Perplexity with a custom LLM solution if you prefer more control
+- Pair it with specialized data sources for your specific monitoring needs
 
 ## Implementation Details
 
@@ -66,6 +77,10 @@ The workflow sends the system prompt to Perplexity API via OpenRouter and proces
 For email delivery, the workflow converts the markdown output to HTML for clean formatting.
 
 ![Markdown to HTML Conversion](screenshots/md-to-html.png)
+
+### 6. Email Delivery (Or Wherever You Prefere)
+
+![Example Email Output](screenshots/email.png)
 
 ### Complete Workflow
 
