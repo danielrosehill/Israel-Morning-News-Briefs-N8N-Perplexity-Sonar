@@ -1,0 +1,209 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Israel Morning News Brief Schema",
+    "description": "Schema for structured daily news reports about Israel and the Middle East",
+    "version": "1.0.0"
+  },
+  "components": {
+    "schemas": {
+      "NewsReport": {
+        "type": "object",
+        "required": [
+          "metadata",
+          "mainDevelopments",
+          "sections",
+          "analysis"
+        ],
+        "properties": {
+          "metadata": {
+            "type": "object",
+            "required": [
+              "title",
+              "generatedAt",
+              "generatedBy",
+              "template"
+            ],
+            "properties": {
+              "title": {
+                "type": "string",
+                "description": "Report title",
+                "example": "Morning News Brief For Israel And The Middle East"
+              },
+              "generatedAt": {
+                "type": "object",
+                "required": ["israelTime", "utcTime"],
+                "properties": {
+                  "israelTime": {
+                    "type": "string",
+                    "description": "Generation timestamp in Israel local time",
+                    "format": "date-time",
+                    "example": "2025-04-09T03:22:14+03:00"
+                  },
+                  "utcTime": {
+                    "type": "string",
+                    "description": "Generation timestamp in UTC/Zulu time",
+                    "format": "date-time",
+                    "example": "2025-04-09T00:22:14Z"
+                  }
+                }
+              },
+              "generatedBy": {
+                "type": "string",
+                "description": "AI model used for generation",
+                "example": "Perplexity Sonar"
+              },
+              "template": {
+                "type": "string",
+                "description": "Template creator",
+                "example": "Daniel Rosehill"
+              }
+            }
+          },
+          "mainDevelopments": {
+            "type": "string",
+            "description": "One-paragraph synopsis of the most significant developments in Israel over the past 24 hours"
+          },
+          "sections": {
+            "type": "object",
+            "required": [
+              "israelGazaWar",
+              "northernFront",
+              "domesticFront",
+              "yemen",
+              "israelAndIran",
+              "israelAndWorld",
+              "israelAndMultilateralBodies",
+              "israelAndJewishWorld"
+            ],
+            "properties": {
+              "israelGazaWar": {
+                "type": "object",
+                "required": ["content", "hasSignificantDevelopments"],
+                "properties": {
+                  "content": {
+                    "type": "string",
+                    "description": "One-paragraph summary of major developments in Israel's conflict with Gaza"
+                  },
+                  "hasSignificantDevelopments": {
+                    "type": "boolean",
+                    "description": "Indicates if there are significant developments (false would result in 'NOSIG')"
+                  }
+                }
+              },
+              "northernFront": {
+                "type": "object",
+                "required": ["content", "hasSignificantDevelopments"],
+                "properties": {
+                  "content": {
+                    "type": "string",
+                    "description": "One-paragraph summary of developments on Israel's northern border with Lebanon and Syria"
+                  },
+                  "hasSignificantDevelopments": {
+                    "type": "boolean",
+                    "description": "Indicates if there are significant developments (false would result in 'NOSIG')"
+                  }
+                }
+              },
+              "domesticFront": {
+                "type": "object",
+                "required": ["content", "hasSignificantDevelopments"],
+                "properties": {
+                  "content": {
+                    "type": "string",
+                    "description": "One-paragraph summary of developments within Israel, including Judea and Samaria and Jerusalem"
+                  },
+                  "hasSignificantDevelopments": {
+                    "type": "boolean",
+                    "description": "Indicates if there are significant developments (false would result in 'NOSIG')"
+                  }
+                }
+              },
+              "yemen": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string",
+                    "description": "Summary of developments between Israel and non-state forces in Yemen"
+                  }
+                }
+              },
+              "israelAndIran": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string",
+                    "description": "Summary of developments regarding Israel's conflict with Iran and its regional proxies"
+                  }
+                }
+              },
+              "israelAndWorld": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string",
+                    "description": "Summary of major developments in Israel's diplomatic relations"
+                  },
+                  "diplomaticRelations": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "country": {
+                          "type": "string",
+                          "description": "Name of the country"
+                        },
+                        "development": {
+                          "type": "string",
+                          "description": "Description of the diplomatic development"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "israelAndMultilateralBodies": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string",
+                    "description": "Summary of developments between Israel and multilateral organizations"
+                  },
+                  "organizations": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "organization": {
+                          "type": "string",
+                          "description": "Name of the multilateral organization"
+                        },
+                        "development": {
+                          "type": "string",
+                          "description": "Description of the development"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "israelAndJewishWorld": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string",
+                    "description": "Summary of developments between Israel and Jewish communities worldwide"
+                  }
+                }
+              }
+            }
+          },
+          "analysis": {
+            "type": "string",
+            "description": "One paragraph providing analytical assessment of recent developments and potential future implications"
+          }
+        }
+      }
+    }
+  }
+}
